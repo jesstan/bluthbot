@@ -1,0 +1,17 @@
+{
+  "name": "bluthbot",
+  "version": "0.0.1",
+  "description": "Slack bot that chimes in with quotes from members of the Bluth family",
+  "main": "bluthbot.js",
+  "scripts": {
+    "start": "node bluthbot.js"
+  },
+  "author": "jtanland",
+  "license": "MIT",
+  "dependencies": {
+    "botkit": "^0.4.7"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
