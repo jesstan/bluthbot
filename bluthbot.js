@@ -100,7 +100,7 @@ controller.setupWebserver(port,function(err,webserver) {
 // });
 
 var bot = controller.spawn({
-    token: process.env.token
+    token: bot.config.token
 }).startRTM();
 
 // Handle events related to the websocket connection to Slack
