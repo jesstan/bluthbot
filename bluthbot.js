@@ -55,12 +55,13 @@ controller.setupWebserver(port,function(err,webserver) {
   controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
     if (err) {
       res.status(500).send('ERROR: ' + err);
+      console.log("error creating oauth endpoint: ", err);
     } else {
+      console.log("successfully created oauth endpoint");
       res.send('Success!');
     }
   });
 });
-
 
 // just a simple way to make sure we don't
 // connect to the RTM twice for the same team
@@ -70,13 +71,16 @@ function trackBot(bot) {
 }
 
 controller.on('create_bot',function(bot,config) {
-
+  console.log("create bot...");
   if (_bots[bot.config.token]) {
+    console.log("bot appears to already be online");
     // already online! do nothing.
   } else {
+    console.log("starting RTM...");
     bot.startRTM(function(err) {
 
       if (!err) {
+        console.log("successfully started RTM");
         trackBot(bot);
       }
 
