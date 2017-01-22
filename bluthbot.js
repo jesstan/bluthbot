@@ -65,39 +65,43 @@ controller.setupWebserver(port,function(err,webserver) {
 
 // just a simple way to make sure we don't
 // connect to the RTM twice for the same team
-var _bots = {};
-function trackBot(bot) {
-  _bots[bot.config.token] = bot;
-}
+// var _bots = {};
+// function trackBot(bot) {
+//   _bots[bot.config.token] = bot;
+// }
 
-controller.on('create_bot',function(bot,config) {
-  console.log("create bot...");
-  if (_bots[bot.config.token]) {
-    console.log("bot appears to already be online");
-    // already online! do nothing.
-  } else {
-    console.log("starting RTM...");
-    bot.startRTM(function(err) {
+// controller.on('create_bot',function(bot,config) {
+//   console.log("create bot...");
+//   if (_bots[bot.config.token]) {
+//     console.log("bot appears to already be online");
+//     // already online! do nothing.
+//   } else {
+//     console.log("starting RTM...");
+//     bot.startRTM(function(err) {
 
-      if (!err) {
-        console.log("successfully started RTM");
-        trackBot(bot);
-      }
+//       if (!err) {
+//         console.log("successfully started RTM");
+//         trackBot(bot);
+//       }
 
-      bot.startPrivateConversation({user: config.createdBy},function(err,convo) {
-        if (err) {
-          console.log(err);
-        } else {
-          //TODO: come up with better starter message
-          convo.say('I am a bot that has just joined your team');
-          convo.say('You must now /invite me to a channel so that I can be of use!');
-        }
-      });
+//       bot.startPrivateConversation({user: config.createdBy},function(err,convo) {
+//         if (err) {
+//           console.log(err);
+//         } else {
+//           //TODO: come up with better starter message
+//           convo.say('I am a bot that has just joined your team');
+//           convo.say('You must now /invite me to a channel so that I can be of use!');
+//         }
+//       });
 
-    });
-  }
+//     });
+//   }
 
-});
+// });
+
+var bot = controller.spawn({
+    token: process.env.token
+}).startRTM();
 
 
 // Handle events related to the websocket connection to Slack
