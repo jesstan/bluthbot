@@ -79,6 +79,7 @@ controller.on('create_bot',function(bot,config) {
         if (err) {
           console.log(err);
         } else {
+          //TODO: come up with better starter message
           convo.say('I am a bot that has just joined your team');
           convo.say('You must now /invite me to a channel so that I can be of use!');
         }
@@ -100,12 +101,137 @@ controller.on('rtm_close',function(bot) {
   // you may want to attempt to re-open
 });
 
-controller.hears('hello','direct_message',function(bot,message) {
-  bot.reply(message,'Hello!');
+controller.hears(['hello', 'hi','annyong'],['direct_message','direct_mention'],function(bot,message) {
+  bot.reply(message,'Annyong!');
 });
 
-controller.hears('^stop','direct_message',function(bot,message) {
-  bot.reply(message,'Goodbye');
+controller.hears(['ham'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message, "So watery. And yet there's a SMACK of ham to it.");
+});
+
+controller.hears(['monster'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"I'M A MONSTER!!");
+});
+
+controller.hears(['brother'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,'Heyyy brother');
+});
+
+controller.hears(['award','army'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"These are my awards, Mother. From army.");
+});
+
+controller.hears(['come on'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,'COME ON!');
+});
+
+controller.hears(['mistake','huge'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"I've made a huge mistake");
+});
+
+controller.hears(['forget','remember'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"Take this and love me again!");
+});
+
+controller.hears(['lighter','fluid'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"But where did the lighter fluid come from...?");
+});
+
+controller.hears(['blue'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"I just blue myself");
+});
+
+controller.hears(['curious'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"I suppose I'm...buy-curious");
+});
+
+controller.hears(['Gene','Parmesan'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"GENE!!!");
+});
+
+controller.hears(['?'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"I don't understand the question, and I won't respond to it");
+});
+
+controller.hears(['mom'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"Mom's awesome");
+});
+
+controller.hears(['fire','sale'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"OH MY GOD! WE'RE HAVING A FIRE...sale!");
+});
+
+controller.hears(['leather'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"I'm looking for something that says, \"Dad likes leather.\"");
+});
+
+controller.hears(['never','nude'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"I understand more than you'll...never know.");
+});
+
+controller.hears(['note'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"And THAT'S why...you always leave a note");
+});
+
+controller.hears(['[A-Z]'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"And THAT'S why...you don't yell");
+});
+
+controller.hears(['Anne','Ann'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  var i = Math.floor(Math.random() * 2);
+  if (i == 0) {
+    bot.reply(message,"Her?");
+  } else {
+    bot.reply(message,"Egg?");
+  }
+});
+
+controller.hears(['banana','stand','money'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"There's always money in the banana stand");
+});
+
+controller.hears(['husband','wife','crime'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"They can't convict a husband and wife for the same crime!");
+});
+
+controller.hears(['touching','touch'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"NO TOUCHING!");
+});
+
+controller.hears(['steve','holt'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"STEVE HOLT!");
+});
+
+controller.hears(['seal','loose'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"Loose seal!");
+});
+
+controller.hears(['bless','blessings'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"And as it is such, so also as such is it unto you");
+});
+
+controller.hears(['dragon','swoop'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"Swoop me, Dragon!");
+});
+
+controller.hears(['bye'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"And say goodbye...to these! Cuz it's the last time.");
+});
+
+controller.hears(['party','off the hook'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"This party's gonna be off the hook");
+});
+
+controller.hears(['father','uncle'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"You said my father was my father, but my uncle is my father. MY FATHER IS MY UNCLE!");
+});
+
+controller.hears(['marry'],['direct_message','direct_mention','ambient'],function(bot,message) {
+  bot.reply(message,"Marry me!");
+});
+
+controller.hears('STFU',['direct_message','direct_mention'],function(bot,message) {
+  bot.reply(message,'I shall be neither seen nor heard.');
   bot.rtm.close();
 });
 
@@ -116,7 +242,7 @@ controller.on(['direct_message','mention','direct_mention'],function(bot,message
     name: 'robot_face',
   },function(err) {
     if (err) { console.log(err) }
-    bot.reply(message,'I heard you loud and clear boss.');
+    //bot.reply(message,'I heard you loud and clear boss.');
   });
 });
 
