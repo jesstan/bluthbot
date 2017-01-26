@@ -176,7 +176,7 @@ controller.hears(['Gene','Parmesan'],['direct_message','direct_mention','ambient
   bot.reply(message,"GENE!!!");
 });
 
-controller.hears(['?'],['direct_message','direct_mention','ambient'],function(bot,message) {
+controller.hears(['\?'],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"I don't understand the question, and I won't respond to it");
 });
 
