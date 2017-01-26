@@ -33,13 +33,12 @@ var redis_store = new Redis_Store({url: redis_url});
 try {
   require('./env.js');
 } catch (e) {
-  if (e.code === 'MODULE_NOT_FOUND') {
-    console.log('Not using environment variables from env.js');
-  }
+    console.log('Not using environment variables from env.js. Error: ', e);
 }
 
 var port = process.env.PORT || process.env.port;
 var http = require("http");
+
 console.log("INSIDE BLUTHBOT.JS");
 setInterval(function() {
     http.get("https://bluthbot.herokuapp.com/");
@@ -72,9 +71,7 @@ controller.setupWebserver(port,function(err,webserver) {
   controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
     if (err) {
       res.status(500).send('ERROR: ' + err);
-      console.log("error creating oauth endpoint: ", err);
     } else {
-      console.log("successfully created oauth endpoint");
       res.send('Success!');
     }
   });
