@@ -200,9 +200,10 @@ controller.hears(['note'],['direct_message','direct_mention','ambient'],function
   bot.reply(message,"And THAT'S why...you always leave a note");
 });
 
-controller.hears(['[A-Z]'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"And THAT'S why...you don't yell");
-});
+//TODO: this doesn't work
+// controller.hears(['[A-Z]'],['direct_message','direct_mention','ambient'],function(bot,message) {
+//   bot.reply(message,"And THAT'S why...you don't yell");
+// });
 
 controller.hears(['Anne','Ann'],['direct_message','direct_mention','ambient'],function(bot,message) {
   var i = Math.floor(Math.random() * 2);
