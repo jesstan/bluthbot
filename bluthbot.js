@@ -23,6 +23,21 @@ This is a sample Slack Button application that adds a bot to one or many slack t
 
 /* Uses the slack button feature to offer a real time bot to multiple teams */
 var Botkit = require('botkit');
+
+// Botkit-based Redis store
+var Redis_Store = require('./redis_storage.js');
+var redis_url = "redis://127.0.0.1:6379"
+var redis_store = new Redis_Store({url: redis_url});
+
+// Programmatically use appropriate process environment variables
+try {
+  require('./env.js');
+} catch (e) {
+  if (e.code === 'MODULE_NOT_FOUND') {
+    console.log('Not using environment variables from env.js');
+  }
+}
+
 var port = process.env.PORT || process.env.port;
 var http = require("http");
 console.log("INSIDE BLUTHBOT.JS");
@@ -35,7 +50,7 @@ if (!process.env.clientId || !process.env.clientSecret || !port) {
 }
 
 var controller = Botkit.slackbot({
-  json_file_store: './db_slackbutton_bot/',
+  storage: redis_store,
   // rtm_receive_messages: false, // disable rtm_receive_messages if you enable events api
 }).configureSlackApp(
   {
@@ -47,9 +62,11 @@ var controller = Botkit.slackbot({
 );
 
 controller.setupWebserver(port,function(err,webserver) {
+
   webserver.get('/',function(req,res) {
     res.sendFile('index.html', {root: __dirname});
   });
+
   controller.createWebhookEndpoints(controller.webserver);
 
   controller.createOauthEndpoints(controller.webserver,function(err,req,res) {
@@ -65,43 +82,43 @@ controller.setupWebserver(port,function(err,webserver) {
 
 // just a simple way to make sure we don't
 // connect to the RTM twice for the same team
-// var _bots = {};
-// function trackBot(bot) {
-//   _bots[bot.config.token] = bot;
-// }
+var _bots = {};
+function trackBot(bot) {
+  _bots[bot.config.token] = bot;
+}
 
-// controller.on('create_bot',function(bot,config) {
-//   console.log("create bot...");
-//   if (_bots[bot.config.token]) {
-//     console.log("bot appears to already be online");
-//     // already online! do nothing.
-//   } else {
-//     console.log("starting RTM...");
-//     bot.startRTM(function(err) {
+controller.on('create_bot',function(bot,config) {
+  console.log("create bot...");
+  if (_bots[bot.config.token]) {
+    console.log("bot appears to already be online");
+    // already online! do nothing.
+  } else {
+    console.log("starting RTM...");
+    bot.startRTM(function(err) {
 
-//       if (!err) {
-//         console.log("successfully started RTM");
-//         trackBot(bot);
-//       }
+      if (!err) {
+        console.log("successfully started RTM");
+        trackBot(bot);
+      }
 
-//       bot.startPrivateConversation({user: config.createdBy},function(err,convo) {
-//         if (err) {
-//           console.log(err);
-//         } else {
-//           //TODO: come up with better starter message
-//           convo.say('I am a bot that has just joined your team');
-//           convo.say('You must now /invite me to a channel so that I can be of use!');
-//         }
-//       });
+      bot.startPrivateConversation({user: config.createdBy},function(err,convo) {
+        if (err) {
+          console.log(err);
+        } else {
+          //TODO: come up with better starter message
+          convo.say('I am a bot that has just joined your team');
+          convo.say('You must now /invite me to a channel so that I can be of use!');
+        }
+      });
 
-//     });
-//   }
-// 
-// });
+    });
+  }
 
-var bot = controller.spawn({
-    token: process.env.token
-}).startRTM();
+});
+
+// var bot = controller.spawn({
+//     token: process.env.token
+// }).startRTM();
 
 // Handle events related to the websocket connection to Slack
 controller.on('rtm_open',function(bot) {

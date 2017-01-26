@@ -9,7 +9,8 @@
   "author": "jtanland",
   "license": "MIT",
   "dependencies": {
-    "botkit": "^0.4.7"
+    "botkit": "^0.4.7",
+    "redis": "*"
   },
   "engines": {
     "node": "*"
