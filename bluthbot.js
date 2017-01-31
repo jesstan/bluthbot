@@ -127,7 +127,7 @@ controller.on('rtm_close',function(bot) {
   // you may want to attempt to re-open
 });
 
-controller.hears([' hello ', ' hi ',' annyong '],['direct_message','direct_mention'],function(bot,message) {
+controller.hears(['\shello\s', '\shi\s','\sannyong\s'],['direct_message','direct_mention'],function(bot,message) {
   bot.reply(message,'Annyong!');
 });
 
@@ -174,10 +174,10 @@ controller.hears([' curious'],['direct_message','direct_mention','ambient'],func
 controller.hears([' Gene ',' Parmesan '],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"GENE!!!");
 });
-
-controller.hears(['^.*\\?$'],['direct_message','direct_mention','ambient'],function(bot,message) {
+/*
+controller.hears(['^.*\?$'],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"I don't understand the question, and I won't respond to it");
-});
+});*/
 
 controller.hears([' mom'],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"Yeah, Mom's awesome. Maybe we should call her.");
