@@ -127,7 +127,7 @@ controller.on('rtm_close',function(bot) {
   // you may want to attempt to re-open
 });
 
-controller.hears(['\s?hello\s?+', '\shi\s','\sannyong\s'],['direct_message','direct_mention'],function(bot,message) {
+controller.hears(['\s?hello\s?', '\shi\s','\sannyong\s'],['direct_message','direct_mention'],function(bot,message) {
   bot.reply(message,'Annyong!');
 });
 
