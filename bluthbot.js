@@ -127,7 +127,8 @@ controller.on('rtm_close',function(bot) {
   // you may want to attempt to re-open
 });
 
-controller.hears(['\s?hello\s?', '\shi\s','\sannyong\s'],['direct_message','direct_mention'],function(bot,message) {
+controller.hears(['^((.*\s)|(\s?))hello((\s.*)|(\s?))$','^((.*\s)|(\s?))hi((\s.*)|(\s?))$','^((.*\s)|(\s?))annyong((\s.*)|(\s?))$'],
+  ['direct_message','direct_mention'],function(bot,message) {
   bot.reply(message,'Annyong!');
 });
 
@@ -151,7 +152,7 @@ controller.hears([' come on '],['direct_message','direct_mention','ambient'],fun
   bot.reply(message,'COME ON!');
 });
 
-controller.hears([' mistake',' huge '],['direct_message','direct_mention','ambient'],function(bot,message) {
+controller.hears(['mistake','huge'],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"I've made a huge mistake \n http://vignette1.wikia.nocookie.net/arresteddevelopment/images/1/15/Orange_-_Season_One_photoshoot_(8).jpeg/revision/latest?cb=20120429230530");
 });
 
