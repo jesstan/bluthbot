@@ -39,7 +39,7 @@ try {
 var port = process.env.PORT || process.env.port;
 var http = require("http");
 
-console.log("INSIDE BLUTHBOT.JS");
+//TODO: test if this function is really needed
 setInterval(function() {
     http.get("https://bluthbot.herokuapp.com/");
 }, 1200000); // pings heroku every 20 minutes (1200000) to keep it awake
@@ -127,8 +127,9 @@ controller.on('rtm_close',function(bot) {
   // you may want to attempt to re-open
 });
 
-controller.hears(['^((.*\s)|(\s?))hello((\s.*)|(\s?))$','^((.*\s)|(\s?))hi((\s.*)|(\s?))$','^((.*\s)|(\s?))annyong((\s.*)|(\s?))$'],
+controller.hears_regexp(['^((.*\s)|(\s?))hello((\s.*)|(\s?))$','^((.*\s)|(\s?))hi((\s.*)|(\s?))$','^((.*\s)|(\s?))annyong((\s.*)|(\s?))$'],
   ['direct_message','direct_mention'],function(bot,message) {
+    console.log("heard: ", message);
   bot.reply(message,'Annyong!');
 });
 
