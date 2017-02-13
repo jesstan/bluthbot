@@ -112,9 +112,6 @@ controller.on('create_bot',function(bot,config) {
 
 });
 
-// var bot = controller.spawn({
-//     token: process.env.token
-// }).startRTM();
 
 // Handle events related to the websocket connection to Slack
 controller.on('rtm_open',function(bot) {
@@ -126,7 +123,7 @@ controller.on('rtm_close',function(bot) {
   // you may want to attempt to re-open
 });
 
-controller.hears(['^((.*\\s)|(\\s?))hello((\\s.*)|(\\s?))$','^((.*\\s)|(\\s?))hi((\\s.*)|(\\s?))$','^((.*\\s)|(\\s?))annyong((\\s.*)|(\\s?))$'],
+controller.hears(['^((.*\\s)|(\\s?))hello((\\s.*)|(\\s?)|(\\.)|(\\!)|(\\?)|(\\,))$','^((.*\\s)|(\\s?))hi((\\s.*)|(\\s?))$','^((.*\\s)|(\\s?))annyong((\\s.*)|(\\s?))$'],
   ['direct_message','direct_mention'],function(bot,message) {
     console.log("heard: ", message);
   bot.reply(message,'Annyong!');
