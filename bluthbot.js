@@ -278,7 +278,7 @@ controller.hears(['^((.*\\s)|(\\s?))((good)?bye)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.
 
 controller.hears(['^((.*\\s)|(\\s?))party(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
   ['direct_message','direct_mention','ambient'],function(bot,message) {
-    bot.reply(message,"This party's gonna be off the hook");
+    bot.reply(message,"This party's gonna be off the hook!");
 });
 
 controller.hears(['^((.*\\s)|(\\s?))(father(s?)|uncle(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
