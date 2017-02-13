@@ -192,28 +192,33 @@ controller.hears(['^((.*\\s)|(\\s?))(gene|parmesan)(((\\.)|(\\!)|(\\?)|(\\,))*(\
     bot.reply(message,"GENE!!!");
 });
 
-controller.hears(['^.*\\?+$'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"I don't understand the question, and I won't respond to it");
+controller.hears(['^.*\\?+$'],
+  ['direct_message','direct_mention'],function(bot,message) {
+    bot.reply(message,"I don't understand the question, and I won't respond to it");
 });
 
-controller.hears(['mom'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"Yeah, Mom's awesome. Maybe we should call her.");
+controller.hears(['^((.*\\s)|(\\s?))mom(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"Yeah, Mom's awesome. Maybe we should call her.");
 });
 
-controller.hears(['fire','sale'],['direct_message','direct_mention','ambient'],function(bot,message) {
+controller.hears(['^((.*\\s)|(\\s?))(fire(s?)|sale(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"OH MY GOD! WE'RE HAVING A FIRE...sale!");
 });
 
-controller.hears(['leather'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"I'm looking for something that says, \"Dad likes leather.\"");
+controller.hears(['^((.*\\s)|(\\s?))leather(y?)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"I'm looking for something that says, \"Dad likes leather.\"");
 });
 
-controller.hears(['never','nude'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"I understand more than you'll...never know.");
+controller.hears(['^((.*\\s)|(\\s?))(never|nude(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"I understand more than you'll...never know.");
 });
 
-controller.hears(['note'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"And THAT'S why...you always leave a note");
+controller.hears(['^((.*\\s)|(\\s?))note(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"And THAT'S why...you always leave a note");
 });
 
 //TODO: this doesn't work
@@ -221,63 +226,76 @@ controller.hears(['note'],['direct_message','direct_mention','ambient'],function
 //   bot.reply(message,"And THAT'S why...you don't yell");
 // });
 
-controller.hears(['Anne','Ann'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  var i = Math.floor(Math.random() * 2);
-  if (i == 0) {
-    bot.reply(message,"Her?");
-  } else {
-    bot.reply(message,"Egg?");
-  }
+controller.hears(['^((.*\\s)|(\\s?))(ann(e?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    var i = Math.floor(Math.random() * 2);
+    if (i == 0) {
+      bot.reply(message,"Her?");
+    } else {
+      bot.reply(message,"Egg?");
+    }
 });
 
-controller.hears(['banana','stand','money'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"There's always money in the banana stand");
+controller.hears(['^((.*\\s)|(\\s?))(banana(s?)|money)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"There's always money in the banana stand");
 });
 
-controller.hears(['husband','wife','crime'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"They can't convict a husband and wife for the same crime!");
+controller.hears(['^((.*\\s)|(\\s?))(husband|wife|crime(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"They can't convict a husband and wife for the same crime!");
 });
 
-controller.hears(['touching','touch'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"NO TOUCHING!");
+controller.hears(['^((.*\\s)|(\\s?))(touch(es|ing)?)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"NO TOUCHING!");
 });
 
-controller.hears(['steve','holt'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"STEVE HOLT!");
+controller.hears(['^((.*\\s)|(\\s?))(steve|holt)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"STEVE HOLT!");
 });
 
-controller.hears(['seal','loose'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"Loose seal!");
+controller.hears(['^((.*\\s)|(\\s?))seal(s?)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"Loose seal!");
 });
 
-controller.hears(['bless'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"And as it is such, so also as such is it unto you");
+controller.hears(['^((.*\\s)|(\\s?))(bless you)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention'],function(bot,message) {
+    bot.reply(message,"And as it is such, so also as such is it unto you");
 });
 
-controller.hears(['dragon','swoop'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"Swoop me, Dragon!");
+controller.hears(['^((.*\\s)|(\\s?))(dragon(s?)|swoop(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"Swoop me, Dragon!");
 });
 
-controller.hears(['bye', 'goodbye'],['direct_message','direct_mention'],function(bot,message) {
-  bot.reply(message,"And say goodbye...to these! Cuz it's the last time.");
+controller.hears(['^((.*\\s)|(\\s?))((good)?bye)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention'],function(bot,message) {
+    bot.reply(message,"And say goodbye...to these! Cuz it's the last time.");
 });
 
-controller.hears(['party','off the hook'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"This party's gonna be off the hook");
+controller.hears(['^((.*\\s)|(\\s?))party(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"This party's gonna be off the hook");
 });
 
-controller.hears(['father','uncle'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"You said my father was my father, but my uncle is my father. MY FATHER IS MY UNCLE!");
+controller.hears(['^((.*\\s)|(\\s?))(father(s?)|uncle(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"You said my father was my father, but my uncle is my father. MY FATHER IS MY UNCLE!");
 });
 
-controller.hears(['marry'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"Marry me!");
+controller.hears(['^((.*\\s)|(\\s?))((i like you)|(you are cool)|(you\'re cool)|(you\'re beautiful)|(you\'re pretty)))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention'],function(bot,message) {
+    bot.reply(message,"Marry me!");
 });
 
-controller.hears('STFU',['direct_message','direct_mention'],function(bot,message) {
-  bot.reply(message,'I shall be neither seen nor heard.');
-  bot.rtm.close();
-  //todo: come back on after x minutes
+controller.hears(['^((.*\\s)|(\\s?))stfu(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention'],function(bot,message) {
+    bot.reply(message,'I shall be neither seen nor heard.');
+    bot.rtm.close();
+    //todo: come back on after x minutes
 });
 
 //TODO:
