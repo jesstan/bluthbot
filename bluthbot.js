@@ -127,8 +127,13 @@ controller.on('rtm_close',function(bot) {
 });
 
 //TODO: look into modifying botkit.hears method to take regex instead of strings
-controller.hears(['^((.*\s)|(\s?))hello((\s.*)|(\s?))$','^((.*\s)|(\s?))hi((\s.*)|(\s?))$','^((.*\s)|(\s?))annyong((\s.*)|(\s?))$'],
-  ['direct_message','direct_mention'],function(bot,message) {
+// controller.hears(['^((.*\\s)|(\\s?))hello((\\s.*)|(\s?))$','^((.*\s)|(\s?))hi((\s.*)|(\s?))$','^((.*\s)|(\s?))annyong((\s.*)|(\s?))$'],
+//   ['direct_message','direct_mention'],function(bot,message) {
+//     console.log("heard: ", message);
+//   bot.reply(message,'Annyong!');
+// });
+
+controller.hears(['^((.*\\s)|(\\s?))hi((\\s.*)|(\\s?))$'], ['direct_message','direct_mention'],function(bot,message) {
     console.log("heard: ", message);
   bot.reply(message,'Annyong!');
 });
