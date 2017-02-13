@@ -162,8 +162,9 @@ controller.hears(['^((.*\\s)|(\\s?))come on(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$
     bot.reply(message,'COME ON!');
 });
 
-controller.hears(['mistake','huge'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"I've made a huge mistake \n http://vignette1.wikia.nocookie.net/arresteddevelopment/images/1/15/Orange_-_Season_One_photoshoot_(8).jpeg/revision/latest?cb=20120429230530");
+controller.hears(['^((.*\\s)|(\\s?))(mistake(s?)|huge|oops)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"I've made a huge mistake \n http://vignette1.wikia.nocookie.net/arresteddevelopment/images/1/15/Orange_-_Season_One_photoshoot_(8).jpeg/revision/latest?cb=20120429230530");
 });
 
 controller.hears(['forget','remember'],['direct_message','direct_mention','ambient'],function(bot,message) {
