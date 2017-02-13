@@ -287,7 +287,7 @@ controller.hears(['^((.*\\s)|(\\s?))(father(s?)|uncle(s?))(((\\.)|(\\!)|(\\?)|(\
 });
 
 //TODO: doesn't work
-controller.hears(['^((.*\\s)|(\\s?))(i like you|you are cool|you\'re cool|you\'re beautiful|you\'re pretty)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+controller.hears(["^((.*\\s)|(\\s?))(i like you|you are cool|you're cool|you're beautiful|you're pretty)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$"],
   ['direct_message','direct_mention'],function(bot,message) {
     console.log("should be saying, marry me!");
     bot.reply(message,"Marry me!");
