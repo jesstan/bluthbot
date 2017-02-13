@@ -125,8 +125,7 @@ controller.on('rtm_close',function(bot) {
 
 controller.hears(['^((.*\\s)|(\\s?))(hello|hi|annyong)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
   ['direct_message','direct_mention'],function(bot,message) {
-    console.log("heard: ", message);
-  bot.reply(message,'Annyong!');
+    bot.reply(message,'Annyong!');
 });
 
 // controller.hears(['^((.*\\s)|(\\s?))hi((\\s.*)|(\\s?))$'], ['direct_message','direct_mention'],function(bot,message) {
@@ -138,12 +137,14 @@ controller.hears(['^((.*\\s)|(\\s?))(hello|hi|annyong)(((\\.)|(\\!)|(\\?)|(\\,))
   bot.reply(message,'Annyong!');
 });*/
 
-controller.hears(['ham'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message, "So watery. And yet there's a SMACK of ham to it.");
+controller.hears(['^((.*\\s)|(\\s?))ham(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message, "So watery. And yet there's a SMACK of ham to it.");
 });
 
-controller.hears(['monster'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"I'M A MONSTER!!");
+controller.hears(['^((.*\\s)|(\\s?))monster(s?)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"I'M A MONSTER!!");
 });
 
 controller.hears(['brother'],['direct_message','direct_mention','ambient'],function(bot,message) {
