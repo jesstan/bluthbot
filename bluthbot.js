@@ -162,34 +162,39 @@ controller.hears(['^((.*\\s)|(\\s?))come on(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$
     bot.reply(message,'COME ON!');
 });
 
-controller.hears(['^((.*\\s)|(\\s?))(mistake(s?)|huge|oops)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+controller.hears(['^((.*\\s)|(\\s?))(mistake(s?)|oops)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
   ['direct_message','direct_mention','ambient'],function(bot,message) {
     bot.reply(message,"I've made a huge mistake \n http://vignette1.wikia.nocookie.net/arresteddevelopment/images/1/15/Orange_-_Season_One_photoshoot_(8).jpeg/revision/latest?cb=20120429230530");
 });
 
-controller.hears(['forget','remember'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"Take this and love me again!");
+controller.hears(['^((.*\\s)|(\\s?))(forget(s?)|remember(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"Take this and love me again!!");
 });
 
-controller.hears(['lighter','fluid'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"But where did the lighter fluid come from...?");
+controller.hears(['^((.*\\s)|(\\s?))(lighter(s?)|fluid(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"But where did the lighter fluid come from...?");
 });
 
-controller.hears(['blue'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"I just blue myself");
+controller.hears(['^((.*\\s)|(\\s?))blue(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"I just blue myself");
 });
 
-controller.hears(['curious'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"I suppose I'm...buy-curious");
+controller.hears(['^((.*\\s)|(\\s?))curious(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"I suppose I'm...buy-curious");
 });
 
-controller.hears(['Gene','Parmesan'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"GENE!!!");
+controller.hears(['^((.*\\s)|(\\s?))(gene|parmesan)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"GENE!!!");
 });
-/*
-controller.hears(['^.*\?$'],['direct_message','direct_mention','ambient'],function(bot,message) {
+
+controller.hears(['^.*\\?+$'],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"I don't understand the question, and I won't respond to it");
-});*/
+});
 
 controller.hears(['mom'],['direct_message','direct_mention','ambient'],function(bot,message) {
   bot.reply(message,"Yeah, Mom's awesome. Maybe we should call her.");
