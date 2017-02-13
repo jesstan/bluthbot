@@ -39,9 +39,9 @@ try {
 var port = process.env.PORT || process.env.port;
 var http = require("http");
 
-// setInterval(function() {
-//     http.get("https://bluthbot.herokuapp.com/");
-// }, 1200000); // pings heroku every 20 minutes (1200000) to keep it awake
+setInterval(function() {
+    http.get("https://bluthbot.herokuapp.com/");
+}, 1200000); // pings heroku every 20 minutes (1200000) to keep it awake
 
 if (!process.env.clientId || !process.env.clientSecret || !port) {
   console.log('Error: Specify clientId clientSecret and port in environment');
