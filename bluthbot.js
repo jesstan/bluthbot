@@ -147,16 +147,19 @@ controller.hears(['^((.*\\s)|(\\s?))monster(s?)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*
     bot.reply(message,"I'M A MONSTER!!");
 });
 
-controller.hears(['brother'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,'Heyyy brother');
+controller.hears(['^((.*\\s)|(\\s?))brother(s?)(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,'Heyyy brother');
 });
 
-controller.hears(['award',' army '],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,"These are my awards, Mother. From army.");
+controller.hears(['^((.*\\s)|(\\s?))(army|award(s?))(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,"These are my awards, Mother. From army.");
 });
 
-controller.hears(['come on'],['direct_message','direct_mention','ambient'],function(bot,message) {
-  bot.reply(message,'COME ON!');
+controller.hears(['^((.*\\s)|(\\s?))come on(((\\.)|(\\!)|(\\?)|(\\,))*(\\s.*)?)$'],
+  ['direct_message','direct_mention','ambient'],function(bot,message) {
+    bot.reply(message,'COME ON!');
 });
 
 controller.hears(['mistake','huge'],['direct_message','direct_mention','ambient'],function(bot,message) {
