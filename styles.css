@@ -1,0 +1,19 @@
+* {
+	background-color: #F46C21;
+	font-family: Arial;
+	color: white;
+}
+
+h1 {
+	/*color: white;*/
+}
+
+.outerContainer {
+	width: 100%;
+	text-align: center;
+}
+
+.innerContainer {
+	/*display: inline-block;*/
+	margin: 0 auto;
+}
