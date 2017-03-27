@@ -64,8 +64,8 @@ controller.setupWebserver(port,function(err,webserver) {
   webserver.get('/',function(req,res) {
     //res.sendFile('index.html', {root: __dirname});
     res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/public');
   });
-  webserver.use(__dirname + 'public');
 
   controller.createWebhookEndpoints(controller.webserver);
 
