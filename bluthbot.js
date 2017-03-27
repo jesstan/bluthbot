@@ -26,7 +26,7 @@ var Botkit = require('botkit');
 
 // Botkit-based Redis store
 var Redis_Store = require('./redis_storage.js');
-var redis_url = "rredis://h:p14f0ad0d4e92c182998f4fff029cd52a44d4c6d77c488907fcd68d7fc3f67b0e@ec2-107-22-239-248.compute-1.amazonaws.com:24139"
+var redis_url = "redis://h:p14f0ad0d4e92c182998f4fff029cd52a44d4c6d77c488907fcd68d7fc3f67b0e@ec2-107-22-239-248.compute-1.amazonaws.com:24139"
 var redis_store = new Redis_Store({url: redis_url});
 
 // Programmatically use appropriate process environment variables
